@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ONE — descubre, reproduce y disfruta tu música.">
+  <meta name="theme-color" content="#0b0b10">
+  <title>ONE — Music</title>
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="ONE inicio">
+        <span class="brand-mark">O</span>
+        <span>ONE</span>
+      </a>
+
+      <nav class="main-nav" aria-label="Navegación principal">
+        <button class="nav-item active" data-view="home"><span>⌂</span> Inicio</button>
+        <button class="nav-item" data-view="discover"><span>✦</span> Descubrir</button>
+        <button class="nav-item" data-view="library"><span>▤</span> Tu biblioteca</button>
+      </nav>
+
+      <div class="nav-section">
+        <div class="section-label">Tu música</div>
+        <button class="nav-item" data-view="liked"><span>♥</span> Favoritos <span class="count" id="likedCount">0</span></button>
+        <button class="nav-item" data-view="queue"><span>≡</span> Cola</button>
+      </div>
+
+      <div class="nav-section playlists-nav">
+        <div class="section-label">Playlists</div>
+        <button class="playlist-link" data-playlist="Vibras ONE">Vibras ONE</button>
+        <button class="playlist-link" data-playlist="Noche">Noche</button>
+        <button class="playlist-link" data-playlist="Energía">Energía</button>
+      </div>
+
+      <div class="sidebar-bottom">
+        <button class="ghost-button" id="themeButton" title="Cambiar tema">☾ <span>Tema</span></button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <button class="icon-button mobile-menu" id="menuButton" aria-label="Abrir menú">☰</button>
+        <div class="search-wrap">
+          <span>⌕</span>
+          <input id="searchInput" type="search" placeholder="¿Qué quieres escuchar?" autocomplete="off">
+          <button id="clearSearch" class="clear-search" aria-label="Limpiar búsqueda">×</button>
+        </div>
+        <div class="top-actions">
+          <button class="icon-button" id="notificationButton" aria-label="Notificaciones">♢</button>
+          <button class="avatar" aria-label="Perfil">O</button>
+        </div>
+      </header>
+
+      <section id="page" class="page" aria-live="polite"></section>
+    </main>
+  </div>
+
+  <div class="player" id="player">
+    <div class="now-playing">
+      <img id="playerCover" src="assets/covers/cover-1.svg" alt="">
+      <div class="now-text">
+        <strong id="playerTitle">Selecciona una canción</strong>
+        <span id="playerArtist">ONE</span>
+      </div>
+      <button class="like-button" id="playerLike" aria-label="Añadir a favoritos">♡</button>
+    </div>
+
+    <div class="player-center">
+      <div class="player-controls">
+        <button class="control" id="shuffleButton" aria-label="Aleatorio">⤨</button>
+        <button class="control" id="prevButton" aria-label="Anterior">◀</button>
+        <button class="play-button" id="playButton" aria-label="Reproducir">▶</button>
+        <button class="control" id="nextButton" aria-label="Siguiente">▶</button>
+        <button class="control" id="repeatButton" aria-label="Repetir">↻</button>
+      </div>
+      <div class="progress-row">
+        <span id="currentTime">0:00</span>
+        <input id="progress" type="range" min="0" max="100" value="0" aria-label="Progreso">
+        <span id="duration">0:00</span>
+      </div>
+    </div>
+
+    <div class="volume-control">
+      <span>◖</span>
+      <input id="volume" type="range" min="0" max="1" step="0.01" value="0.75" aria-label="Volumen">
+    </div>
+  </div>
+
+  <audio id="audio" preload="metadata"></audio>
+  <div class="toast" id="toast" role="status"></div>
+  <script src="script.js"></script>
+</body>
+</html>
